@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# dehydrated by lukas2511
-# Source: https://github.com/lukas2511/dehydrated
+# letsencrypt by lukas2511
+# Source: https://github.com/lukas2511/letsencrypt
 #
 # This script is licensed under The MIT License (see LICENSE for more information).
 
@@ -25,7 +25,7 @@ BASEDIR="${SCRIPTDIR}"
 # Create (identifiable) temporary files
 _mktemp() {
   # shellcheck disable=SC2068
-  mktemp ${@:-} "${TMPDIR:-/tmp}/dehydrated-XXXXXX"
+  mktemp ${@:-} "${TMPDIR:-/tmp}/letsencrypt-XXXXXX"
 }
 
 # Check for script dependencies
@@ -94,7 +94,7 @@ verify_config() {
 load_config() {
   # Check for config in various locations
   if [[ -z "${CONFIG:-}" ]]; then
-    for check_config in "/etc/dehydrated" "/usr/local/etc/dehydrated" "${PWD}" "${SCRIPTDIR}"; do
+    for check_config in "/etc/letsencrypt" "/usr/local/etc/letsencrypt" "${PWD}" "${SCRIPTDIR}"; do
       if [[ -f "${check_config}/config" ]]; then
         BASEDIR="${check_config}"
         CONFIG="${check_config}/config"
@@ -183,7 +183,7 @@ load_config() {
 
   [[ -z "${CERTDIR}" ]] && CERTDIR="${BASEDIR}/certs"
   [[ -z "${DOMAINS_TXT}" ]] && DOMAINS_TXT="${BASEDIR}/domains.txt"
-  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/var/www/dehydrated"
+  [[ -z "${WELLKNOWN}" ]] && WELLKNOWN="/var/www/letsencrypt"
   [[ -z "${LOCKFILE}" ]] && LOCKFILE="${BASEDIR}/lock"
   [[ -n "${PARAM_LOCKFILE_SUFFIX:-}" ]] && LOCKFILE="${LOCKFILE}-${PARAM_LOCKFILE_SUFFIX}"
   [[ -n "${PARAM_NO_LOCK:-}" ]] && LOCKFILE=""
@@ -246,7 +246,7 @@ init_system() {
           LICENSE="${REAL_LICENSE}"
         else
           printf '\n'
-          printf 'To use dehydrated with this certificate authority you have to agree to their terms of service which you can find here: %s\n\n' "${REAL_LICENSE}"
+          printf 'To use letsencrypt with this certificate authority you have to agree to their terms of service which you can find here: %s\n\n' "${REAL_LICENSE}"
           printf 'To accept these terms of service run `%s --register --accept-terms`.\n' "${0}"
           exit 1
         fi
@@ -1049,7 +1049,7 @@ command_help() {
 # Usage: --env (-e)
 # Description: Output configuration variables for use in other scripts
 command_env() {
-  echo "# dehydrated configuration"
+  echo "# letsencrypt configuration"
   load_config
   typeset -p CA LICENSE CERTDIR CHALLENGETYPE DOMAINS_D DOMAINS_TXT HOOK HOOK_CHAIN RENEW_DAYS ACCOUNT_KEY ACCOUNT_KEY_JSON KEYSIZE WELLKNOWN PRIVATE_KEY_RENEW OPENSSL_CNF CONTACT_EMAIL LOCKFILE
 }
