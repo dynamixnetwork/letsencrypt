@@ -1,4 +1,4 @@
-# dehydrated [![Build Status](https://travis-ci.org/lukas2511/dehydrated.svg?branch=master)](https://travis-ci.org/lukas2511/dehydrated)
+# letsencrypt [![Build Status](https://travis-ci.org/lukas2511/letsencrypt.svg?branch=master)](https://travis-ci.org/lukas2511/letsencrypt)
 
 ![](docs/logo.jpg)
 
@@ -28,20 +28,20 @@ If you have any problems take a look at our [Troubleshooting](docs/troubleshooti
 
 ## Config
 
-dehydrated is looking for a config file in a few different places, it will use the first one it can find in this order:
+letsencrypt is looking for a config file in a few different places, it will use the first one it can find in this order:
 
-- `/etc/dehydrated/config`
-- `/usr/local/etc/dehydrated/config`
+- `/etc/letsencrypt/config`
+- `/usr/local/etc/letsencrypt/config`
 - The current working directory of your shell
-- The directory from which dehydrated was ran
+- The directory from which letsencrypt was ran
 
-Have a look at [docs/examples/config](docs/examples/config) to get started, copy it to e.g. `/etc/dehydrated/config`
+Have a look at [docs/examples/config](docs/examples/config) to get started, copy it to e.g. `/etc/letsencrypt/config`
 and edit it to fit your needs.
 
 ## Usage:
 
 ```text
-Usage: ./dehydrated [-h] [command [argument]] [parameter [argument]] [parameter [argument]] ...
+Usage: ./letsencrypt [-h] [command [argument]] [parameter [argument]] [parameter [argument]] ...
 
 Default command: help
 
